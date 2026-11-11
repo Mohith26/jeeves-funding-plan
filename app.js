@@ -59,9 +59,20 @@ function renderAccounts() {
   const usd = data.accounts.find((a) => a.treasury);
   $('accounts').innerHTML = `<div class="head"><div><h3>Local currency accounts</h3>
     <div class="sub">Funded from your USD Cash Account •••• ${usd.mask}. Covered today; conversions are planned just before each account needs them.</div></div>
-    <button class="btn dark" id="sendAll"><i class="ti ti-send"></i>Send ${R.results.reduce((a, x) => a + x.topups.length, 0)} for approval</button></div>${rows}`;
+    <button class="btn dark" id="sendAll"><i class="ti ti-send"></i>Send ${R.results.reduce((a, x) => a + x.topups.length, 0)} for approval</button></div>${rows}${upcoming()}`;
   document.querySelectorAll('.acct').forEach((el) => el.addEventListener('click', () => { state.sel = el.dataset.c; renderAccounts(); renderDetail(); }));
   $('sendAll').addEventListener('click', (e) => { e.currentTarget.innerHTML = '<i class="ti ti-check"></i>Drafts created in Accounts payable'; });
+}
+
+function upcoming() {
+  const ev = [];
+  for (const r of R.results) {
+    r.topups.forEach((t) => ev.push({ d: t.date, k: 'conv', txt: `Convert ~$${nf(t.usdMed)} into ${r.ccy}`, sub: `Tops ${r.ccy} up to ${short(r.ccy, t.level)}` }));
+    r.bills.forEach((b) => ev.push({ d: b.date, k: 'bill', txt: b.vendor, sub: `${money(r.ccy, b.amount)} · ${b.status}` }));
+  }
+  ev.sort((a, b) => a.d.localeCompare(b.d) || (a.k === 'conv' ? -1 : 1));
+  const next = ev.slice(0, 4);
+  return `<div class="up"><div class="uph">Coming up</div><div class="upl">${next.map((e) => `<div class="ue ${e.k}"><span class="ud">${dt(e.d)}</span><i class="ti ${e.k === 'conv' ? 'ti-arrows-diagonal' : 'ti-file-dollar'}"></i><div><b>${e.txt}</b><span>${e.sub}</span></div></div>`).join('')}</div></div>`;
 }
 
 function renderControls() {
