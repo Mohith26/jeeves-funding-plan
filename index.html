@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accounts · Funding plan | Jeeves (concept)</title>
+<link rel="icon" href="assets/jeeves-mark.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="assets/jeeves-logo.svg" alt="Jeeves" class="logo" />
+      <button class="collapse" aria-label="Collapse sidebar"><i class="ti ti-chevrons-left"></i></button>
+    </div>
+    <button class="entity">
+      <img class="flag-sm" src="https://cdn.jsdelivr.net/gh/HatScripts/circle-flags@gh-pages/flags/mx.svg" alt="" />
+      <span>Rutas del Norte - México</span><i class="ti ti-chevron-down"></i>
+    </button>
+    <nav>
+      <a><i class="ti ti-home"></i>Home</a>
+      <a><i class="ti ti-inbox"></i>Tasks<span class="count">7</span></a>
+      <a><i class="ti ti-sparkles ai"></i>AI agents</a>
+      <a class="active"><i class="ti ti-building-bank"></i>Accounts</a>
+      <a><i class="ti ti-arrows-right-left"></i>Transactions</a>
+      <div class="sect">PAY</div>
+      <a><i class="ti ti-file-text"></i>Bills inbox</a>
+      <a><i class="ti ti-file-dollar"></i>Accounts payable</a>
+      <a class="has"><i class="ti ti-book"></i>Accounting<i class="ti ti-chevron-down chev"></i></a>
+      <a><i class="ti ti-building-store"></i>Vendors</a>
+      <div class="sect">SPEND</div>
+      <a class="has"><i class="ti ti-credit-card"></i>Cards<i class="ti ti-chevron-down chev"></i></a>
+      <a><i class="ti ti-rotate-clockwise-2"></i>Reimbursements</a>
+      <a class="has"><i class="ti ti-plane-tilt"></i>Travel<i class="ti ti-chevron-down chev"></i></a>
+      <div class="sect">MANAGE</div>
+      <a class="has"><i class="ti ti-settings"></i>Settings<i class="ti ti-chevron-down chev"></i></a>
+    </nav>
+    <div class="me">
+      <div class="avatar">V</div>
+      <div class="who"><b>Valeria Ortiz</b><span>valeria.ortiz@rutasdelnorte.mx</span></div>
+      <i class="ti ti-dots-vertical"></i>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div class="title"><i class="ti ti-building-bank"></i>Accounts</div>
+      <label class="search"><i class="ti ti-search"></i><input placeholder="Search" /></label>
+    </header>
+
+    <section class="actions">
+      <div class="action"><span class="tile"><i class="ti ti-download"></i></span><div><b>Add funds</b><span>Deposit into your accounts</span></div></div>
+      <div class="action"><span class="tile"><i class="ti ti-arrows-diagonal"></i></span><div><b>Convert funds</b><span>Move money between currencies</span></div></div>
+      <div class="action sel"><span class="tile"><i class="ti ti-calendar-dollar"></i></span><div><b>Funding plan</b><span>Keep every account covered, just in time</span></div><i class="ti ti-sparkles spark"></i></div>
+    </section>
+
+    <div class="tabs">
+      <a>Cash accounts</a><a>Stablecoin accounts</a><a class="on">Funding plan <span class="new">New</span></a>
+    </div>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="grid2">
+      <div class="card" id="accounts"></div>
+      <div class="card controls" id="controls"></div>
+    </section>
+
+    <section class="card" id="detail"></section>
+    <section class="card" id="compare"></section>
+    <section class="card how" id="how"></section>
+
+    <footer>Unofficial concept demo by Mohith Gajjela. Not affiliated with Jeeves. Synthetic company data; FX history is public ECB reference rates (via Frankfurter).</footer>
+  </main>
+</div>
+<div class="tip" id="tip"></div>
+<button class="chat" aria-label="Chat"><i class="ti ti-message-circle-2-filled"></i></button>
+<script type="module" src="app.js"></script>
+</body>
+</html>
